@@ -1,0 +1,119 @@
+
+/* .container{} */
+    /* border: 10px solid gray; */
+    /* max-width: 1140px;
+    margin: auto;
+    
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.box img{
+    object-fit: fill;
+    display: flex;
+    justify-content: center;
+} */
+%justify-content-center{}
+%.text-center{}
+
+.justify-content-center-extend{
+    @extends %justify-content-center;
+
+    color: black    ;
+    background-color:#F0ECCF;
+    height: auto;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    margin-top: 10px;
+    padding: 20px;  
+}
+
+.text-center-extend{
+    @extends %text-center;
+    background-color:#4E6C50;
+    color: #F0ECCF;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    height: 5vh;
+    margin-top: 10px;
+}
+.text-center{
+    background-color:#4E6C50;
+    color: #F0ECCF;
+    height:max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    margin-top: 10px;
+}
+.justify-content-center{
+    color: black    ;
+    background-color:#F0ECCF;
+    height: auto;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    margin-top: 10px;
+    padding: 20px;            
+}
+.button{
+    background-color: #FFCA2C;
+    color: #4E6C50;
+    font-size: 18px;
+    border-radius: 5px;
+    border-color: #4E6C50;
+    transition-duration: 0.5s;
+}
+.button:hover{
+    background-color: #4E6C50;
+    color: #F0ECCF;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    border-color: #F0ECCF;    
+}
+.button:hover:after{
+    content: " >> SIMULATE";
+}
+
+.button2{
+    background-color: #FFCA2C;
+    color: #4E6C50;
+    font-size: 18px;
+    border-radius: 5px;
+    border-color: #4E6C50;
+    transition-duration: 0.5s;
+    margin-bottom: 10px;
+}
+
+.button2:hover:after{
+    content: " (UNDER CONSTRUCTION)";
+}
+
+.button2:hover{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}
+
+.button3{
+    background-color: #4E6C50;
+    color: #F0ECCF;
+    font-size: 18px;
+    border-radius: 5px;
+    border-color: #F0ECCF;
+    transition-duration: 0.5s;
+}
+
+.button3:hover{
+    background-color: #FFCA2C;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    border-color: #4E6C50;
+}
