@@ -18,10 +18,9 @@ public class StockpickerApplication implements CommandLineRunner {
 	}
 
 	public void run(String...args){
-		dcaSvc.computeDCA("spy","2019-01-01","2023-01-01",7,150,1000);
-		dcaSvc.computeDCA("aapl","2019-01-01","2023-01-01",7,150,1000);
-
-		dcaSvc.printAll();
+		// dcaSvc.computeDCA("spy","2019-01-01","2023-01-01",7,150,1000);
+		// dcaSvc.computeDCA("aapl","2020-02-18","2023-02-27",30,500,1000);
+		// dcaSvc.printAll();
 	}
 
 }

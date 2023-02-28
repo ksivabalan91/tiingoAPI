@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DCA Sim</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>body{background-color: #56B174;}</style>
 </head>
@@ -29,8 +29,8 @@
                 </h5>
             </div>
             <div class="col-sm-12 col-lg-6">
-                <form action="/dcaform2" method="POST">
-                    <div class="mb-3">
+                <form action="/dcaform/fill" method="POST">
+<div class="mb-3">
                         <h2 class="text-center-extend">Fill out details</h2>
 
                         <label class="form-label" style="font-size:large; color: black; font-weight: 500;">Ticker Symbol</label>
@@ -53,23 +53,21 @@
                             Interval (Days)
                         </label>
                         <small id="helpId" class="form-text text-white">(Intervals in which stocks are bought in days)</small>
-                        <input type="number" class="form-control form-control-lg" name="endDate" aria-describedby="helpId" placeholder="*eg. 7, 14, 30 days*">
+                        <input type="number" class="form-control form-control-lg" name="investInterval" aria-describedby="helpId" placeholder="*eg. 7, 14, 30 days*">
                         
                         <label class="form-label" style="font-size:large; color: black; font-weight: 500;">
                             Amount (USD)
                         </label>
                         <small id="helpId" class="form-text text-white">(Amount of stock bought during each interval in USD)</small>
-                        <input type="number" class="form-control form-control-lg" name="endDate" aria-describedby="helpId" placeholder="*500*">
+                        <input type="number" class="form-control form-control-lg" name="investAmount" aria-describedby="helpId" placeholder="*500*">
                         
                         <label class="form-label" style="font-size:large; color: black; font-weight: 500;">
                             Starting Amount (USD)
                         </label>
                         <small id="helpId" class="form-text text-white">(Inititial investment amount in USD)</small>
-                        <input type="number" class="form-control form-control-lg" name="endDate" aria-describedby="helpId" placeholder="*0*">
+                        <input type="number" class="form-control form-control-lg" name="initialAmount" aria-describedby="helpId" placeholder="*0*">
 
-                        <button type="submit" class="button3" style="margin-top: 10px; width: 100%;" action="/dca-form">Submit</button>
-
-
+                        <button type="submit" class="button3" style="margin-top: 10px; width: 100%;">Submit</button>
                     </div>
                 </form>
             </div>
@@ -78,10 +76,27 @@
     </div>
     <div class="container">
         <div class="row">
-            <tr data-th-each="mod:${dcaList}">
-                <td headers="Ticker">
-                    <span data-th-text="${i.ticker}"></span>
+            <tr data-th-each="i:${dcaList}">
+                <td><span data-th-text="${i.ticker}"></span></td>
+                <td><span data-th-text="${i.startDate}"></span></td>
+                <td><span data-th-text="${i.endDate}"></span></td>
+                <td><span data-th-text="${i.duration}"></span></td>
+                <td><span data-th-text="${i.initialAmount}"></span></td>
+                <td><span data-th-text="${i.investAmount}"></span></td>
+                <td><span data-th-text="${i.investInterval}"></span></td>
+                <td><span data-th-text="${i.repetitions}"></span></td>
+                <td><span data-th-text="${i.quantity}"></span></td>
+                <td><span data-th-text="${i.avgCost}"></span></td>
+                <td><span data-th-text="${i.lastPrice}"></span></td>
+                <td><span data-th-text="${i.investTotal}"></span></td>
+                <td><span data-th-text="${i.portValue}"></span></td>
+                <td><span data-th-text="${i.profitLoss}"></span></td>
+                <td>
+                    <form action="/dcaform/delete" method="DELETE">
+                        <button type="button" class="btn btn-outline-primary">Delete</button>
+                    </form>
                 </td>
+
             </tr>
 
         </div>

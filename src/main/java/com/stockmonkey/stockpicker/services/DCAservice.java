@@ -64,6 +64,8 @@ public class DCAservice {
         JsonArray jsonArr = jsonReader.readArray(); 
         HashMap<LocalDate, Double> priceMap = new HashMap<>();
 
+        System.out.println(jsonArr.toString());
+
         //! Creating new map with date as key and stock price as value
         System.out.println("Service creating price map...");
         for (int i = 0; i < jsonArr.size(); i++) {
