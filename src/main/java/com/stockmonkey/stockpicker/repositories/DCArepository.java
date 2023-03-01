@@ -1,5 +1,6 @@
 package com.stockmonkey.stockpicker.repositories;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,6 +35,15 @@ public class DCArepository {
             System.out.println(i.toString());
         }
         return this.dcaList;
+    }
+
+    public void checkInstance(String ticker, LocalDate startDate, LocalDate endDate){
+
+        for(DCAmodel i:dcaList){
+            if(i.getTicker().equalsIgnoreCase(ticker)&&i.getStartDate().equals(startDate)&&i.getEndDate().equals(endDate)){
+                dcaList.remove(i);
+            }
+        }       
     }
 
     

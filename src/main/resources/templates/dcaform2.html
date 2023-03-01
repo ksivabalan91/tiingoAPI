@@ -11,28 +11,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-lg-6">
-                <h2 class="text-center-extend">
-                    Stock DCA model
-                </h2>
-                <h5 class="justify-content-center-extend">
-                    Investing can be challenging. Even experienced investors who try to time the market to buy at the most opportune moments can come up short.
-                    <br><br>                    
-                    Dollar-cost averaging is a strategy that can make it easier to deal with uncertain markets by making purchases automatic. It also supports an investor's effort to invest regularly.
-                    <br><br>
-                    Dollar-cost averaging involves investing the same amount of money in a target security at regular intervals over a certain period of time, regardless of price. By using dollar-cost averaging, investors may lower their average cost per share and reduce the impact of volatility on the their portfolios.
-                    <br><br>
-                    In effect, this strategy eliminates the effort required to attempt to time the market to buy at the best prices.
-                    <br><br>
-                    Dollar-cost averaging is also known as the constant dollar plan.
-                </h5>
-            </div>
-            <div class="col-sm-12 col-lg-6">
+        <div class="row">            
                 <form action="/dcaform/fill" method="POST">
-<div class="mb-3">
-                        <h2 class="text-center-extend">Fill out details</h2>
-
+                    <div class="mb-3">
+                        <h2 class="text-center" style="background-color: #4E6C50;color: #F0ECCF; height: 6vh;">Fill out details</h2>
+                        
                         <label class="form-label" style="font-size:large; color: black; font-weight: 500;">Ticker Symbol</label>
                         <small id="helpId" class="form-text text-white">(insert vaild ticker symbols from US stock market))</small><br>
                         <input type="text" class="form-control form-control-lg" name="ticker" id="" aria-describedby="helpId" placeholder="*eg.tsla*">
@@ -66,38 +49,58 @@
                         </label>
                         <small id="helpId" class="form-text text-white">(Inititial investment amount in USD)</small>
                         <input type="number" class="form-control form-control-lg" name="initialAmount" aria-describedby="helpId" placeholder="*0*">
-
+                        
                         <button type="submit" class="button3" style="margin-top: 10px; width: 100%;">Submit</button>
                     </div>
-                </form>
-            </div>
-        </div>
-
+                </form>            
+        </div>        
     </div>
+
     <div class="container">
         <div class="row">
-            <tr data-th-each="i:${dcaList}">
-                <td><span data-th-text="${i.ticker}"></span></td>
-                <td><span data-th-text="${i.startDate}"></span></td>
-                <td><span data-th-text="${i.endDate}"></span></td>
-                <td><span data-th-text="${i.duration}"></span></td>
-                <td><span data-th-text="${i.initialAmount}"></span></td>
-                <td><span data-th-text="${i.investAmount}"></span></td>
-                <td><span data-th-text="${i.investInterval}"></span></td>
-                <td><span data-th-text="${i.repetitions}"></span></td>
-                <td><span data-th-text="${i.quantity}"></span></td>
-                <td><span data-th-text="${i.avgCost}"></span></td>
-                <td><span data-th-text="${i.lastPrice}"></span></td>
-                <td><span data-th-text="${i.investTotal}"></span></td>
-                <td><span data-th-text="${i.portValue}"></span></td>
-                <td><span data-th-text="${i.profitLoss}"></span></td>
-                <td>
-                    <form action="/dcaform/delete" method="DELETE">
-                        <button type="button" class="btn btn-outline-primary">Delete</button>
-                    </form>
-                </td>
+            <table style="background-color: black; width: auto;" border="2">
+                <tr style="background-color: #4E6C50;color:#F0ECCF;">
+                    <th width="100px">Ticker</th>
+                    <th width="100px">Start Date</th>
+                    <th width="100px">End Date</th>
+                    <th width="100px">Duration</th>
+                    <th width="100px">Initial Amount</th>
+                    <th width="100px">Invest Amount</th>
+                    <th width="100px">Invest Interval</th>
+                    <th width="100px">Repetitions</th>
+                    <th width="100px">Quantity</th>
+                    <th width="100px">Avg Cost</th>
+                    <th width="100px">Last Price</th>
+                    <th width="100px">Invest Total</th>
+                    <th width="100px">Portfolio Value</th>
+                    <th width="100px">Profit / Loss</th>
+                    <th width="100px"></th>
+                </tr>
+                <tr data-th-each="i:${dcaList}" style="background-color: #F0ECCF;color:black;" align="center">
+                    <td><span data-th-text="${i.ticker}"></span></td>
+                    <td><span data-th-text="${i.startDate}"></span></td>
+                    <td><span data-th-text="${i.endDate}"></span></td>
+                    <td><span data-th-text="${i.duration}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.initialAmount,1,2)}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.investAmount,1,2)}"></span></td>
+                    <td><span data-th-text="${i.investInterval}"></span></td>
+                    <td><span data-th-text="${i.repetitions}"></span></td>
+                    <td><span data-th-text="${#numbers.formatDecimal(i.quantity,1,2)}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.avgCost,1,2)}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.lastPrice,1,2)}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.investTotal,1,2)}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.portValue,1,2)}"></span></td>
+                    <td>$<span data-th-text="${#numbers.formatDecimal(i.profitLoss,1,2)}"></span></td>
+                    <td hidden>ID</td>
+                    <td>
+                        <form action="/dcaform/delete" method="DELETE">
+                            <button type="button" class="btn btn-outline-primary">Delete</button>
+                        </form>
+                    </td>
+    
+                </tr>
 
-            </tr>
+            </table>
 
         </div>
 

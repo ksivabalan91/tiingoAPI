@@ -43,11 +43,14 @@ public class DCAservice {
 
         LocalDate startDate = LocalDate.parse(start, format);
         LocalDate endDate = LocalDate.parse(end, format);
+
+        dcaRepo.checkInstance(ticker, startDate, endDate);
         
         int duration = (int) ChronoUnit.DAYS.between(startDate, endDate);
         int repetitions = duration/investInterval;
         double quantity=0.0;
         double investTotal = repetitions*investAmount;
+        
         
         //! Rest Request from API
         //* example: https://api.tiingo.com/tiingo/daily/<ticker>/prices?startDate=2012-1-1&endDate=2016-1-1
@@ -64,7 +67,7 @@ public class DCAservice {
         JsonArray jsonArr = jsonReader.readArray(); 
         HashMap<LocalDate, Double> priceMap = new HashMap<>();
 
-        System.out.println(jsonArr.toString());
+        // System.out.println(jsonArr.toString());
 
         //! Creating new map with date as key and stock price as value
         System.out.println("Service creating price map...");
